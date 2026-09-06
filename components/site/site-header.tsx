@@ -8,9 +8,9 @@ import { Wordmark } from '@/components/site/wordmark';
 
 const links = [
   { href: '/books', label: '도서' },
+  { href: '/notes', label: '제작 노트' },
   { href: '/#series', label: '시리즈' },
   { href: '/about', label: '출판사 소개' },
-  { href: '/#news', label: '소식' },
 ];
 
 export function SiteHeader() {

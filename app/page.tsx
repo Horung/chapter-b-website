@@ -4,12 +4,15 @@ import { ArrowRight, BookOpenText, CalendarDays, MessageCircleMore } from 'lucid
 import { buttonVariants } from '@/components/ui/button';
 import { BookCard } from '@/components/site/book-card';
 import { BookCover } from '@/components/site/book-cover';
+import { NoteCard } from '@/components/site/note-card';
 import { SiteFooter } from '@/components/site/site-footer';
 import { SiteHeader } from '@/components/site/site-header';
 import { books, formatPrice } from '@/data/books';
+import { notes } from '@/data/notes';
 import { cn } from '@/lib/utils';
 
 const featured = books.find((book) => book.featured) ?? books[0];
+const latestNotes = notes.slice(-3).reverse();
 
 const series = [
   {
@@ -135,6 +138,21 @@ export default function Home() {
               <p className="mt-7 text-xs font-semibold">{item.count}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-[#f3f0eb]">
+        <div className="site-container py-20 sm:py-28">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">AUTHOR&apos;S MAKING NOTES</p>
+              <h2 className="section-title">책을 만드는 기록</h2>
+            </div>
+            <Link href="/notes" className="section-more">전체 기록 <ArrowRight /></Link>
+          </div>
+          <div className="mt-8 grid gap-x-8 md:grid-cols-3">
+            {latestNotes.map((note) => <NoteCard key={note.slug} note={note} />)}
+          </div>
         </div>
       </section>
 

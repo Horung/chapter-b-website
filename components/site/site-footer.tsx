@@ -17,6 +17,7 @@ export function SiteFooter() {
           <p className="footer-title">바로가기</p>
           <div className="mt-4 grid gap-3 text-sm text-white/65">
             <Link href="/books" className="hover:text-white">전체 도서</Link>
+            <Link href="/notes" className="hover:text-white">제작 노트</Link>
             <Link href="/#series" className="hover:text-white">시리즈</Link>
             <Link href="/about" className="hover:text-white">출판사 소개</Link>
             <Link href="/#news" className="hover:text-white">공지사항</Link>
