@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #241f1e;
+  --card: #ffffff;
+  --card-foreground: #241f1e;
+  --popover: #ffffff;
+  --popover-foreground: #241f1e;
+  --primary: #7a2e2e;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f0eb;
+  --secondary-foreground: #241f1e;
+  --muted: #f4f2ef;
+  --muted-foreground: #6f6965;
+  --accent: #efe7e4;
+  --accent-foreground: #672424;
+  --destructive: #b42318;
+  --border: #e4dfda;
+  --input: #d8d2cc;
+  --ring: #7a2e2e;
+  --radius: 0.25rem;
+  --font-sans: "Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+}
+
+.dark {
+  --background: #1e1a19;
+  --foreground: #f8f6f3;
+  --card: #282220;
+  --card-foreground: #f8f6f3;
+  --popover: #282220;
+  --popover-foreground: #f8f6f3;
+  --primary: #a95454;
+  --primary-foreground: #ffffff;
+  --secondary: #332b29;
+  --secondary-foreground: #f8f6f3;
+  --muted: #302927;
+  --muted-foreground: #b9b0aa;
+  --accent: #492e2d;
+  --accent-foreground: #ffffff;
+  --destructive: #ef7a70;
+  --border: rgba(255,255,255,.12);
+  --input: rgba(255,255,255,.16);
+  --ring: #b96565;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground antialiased; font-family: var(--font-sans); }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  ::selection { background: #7a2e2e; color: #fff; }
+}
+
+@layer components {
+  .site-container { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12; }
+  .eyebrow { @apply text-[11px] font-semibold tracking-[0.2em] text-primary; }
+  .nav-link { @apply relative py-2 text-[#3d3735] transition-colors hover:text-primary; }
+  .nav-link::after { content: ''; @apply absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-primary transition-transform duration-200; }
+  .nav-link:hover::after { @apply scale-x-100; }
+  .icon-button { @apply grid size-10 place-items-center text-[#393332] transition-colors hover:text-primary; }
+  .icon-button svg { @apply size-[19px] stroke-[1.6]; }
+  .book-shadow { background: radial-gradient(ellipse, rgba(42,32,29,.20) 0%, rgba(42,32,29,.07) 42%, transparent 72%); filter: blur(2px); }
+  .section-heading { @apply flex items-end justify-between gap-5 border-b border-[#d8d3cd] pb-5; }
+  .section-title { @apply mt-2 text-3xl font-semibold tracking-[-0.045em] sm:text-4xl; }
+  .section-more { @apply hidden items-center gap-2 pb-1 text-sm font-semibold sm:flex; }
+  .section-more svg { @apply size-4; }
+  .book-grid { @apply grid grid-cols-2 gap-x-5 gap-y-14 md:grid-cols-4 md:gap-x-8; }
+  .footer-title { @apply text-xs font-semibold tracking-[0.14em] text-white/90; }
+  .footer-icon { @apply grid size-9 place-items-center border border-white/15 text-white/65 transition-colors hover:border-white/35 hover:text-white; }
+  .footer-icon svg { @apply size-4 stroke-[1.5]; }
+}
+
+@media (max-width: 420px) {
+  .book-cover-shell { padding-inline: 0.35rem; }
+}
